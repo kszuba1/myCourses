@@ -96,7 +96,7 @@
 <body>
 <div class="container" style="padding-top: 2%">
     <div class="topnav">
-        <a th:href="@{/student/studentPage}">Home</a>
+        <a th:href="@{home}">Home</a>
         <a th:href="@{/student/yourCourses}" sec:authorize="${hasRole('ROLE_STUDENT')}">Your courses</a>
         <a th:href="@{/student/student_logout}">Logout</a>
 

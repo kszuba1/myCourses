@@ -23,7 +23,7 @@ public class InstructorController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("/instructorPage")
+    @GetMapping("/home")
     public String instructorHome(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -49,7 +49,7 @@ public class InstructorController {
 
         courseService.deleteCourseById(id);
 
-        return "redirect:/instructor/instructorPage";
+        return "redirect:/instructor/home";
     }
 
     @GetMapping("/addCourse")
@@ -73,7 +73,7 @@ public class InstructorController {
 
         courseService.save(course);
 
-        return "redirect:/instructor/instructorPage";
+        return "redirect:/instructor/home";
     }
 
     @GetMapping("/updateCourse")

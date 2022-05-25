@@ -29,7 +29,7 @@ public class StudentController {
     @Autowired
     private ReviewService reviewService;
 
-    @GetMapping("/studentPage")
+    @GetMapping("/home")
     public String studentHome(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -88,7 +88,7 @@ public class StudentController {
 
             redirAttrs.addFlashAttribute("error", "You are already signed up for this course!");
 
-            return "redirect:/student/studentPage";
+            return "redirect:/student/home";
         }
 
         course.addStudent(student);
@@ -97,7 +97,7 @@ public class StudentController {
 
         redirAttrs.addFlashAttribute("success", "You have successfully signed up for a course.");
 
-        return "redirect:/student/studentPage";
+        return "redirect:/student/home";
     }
 
 
