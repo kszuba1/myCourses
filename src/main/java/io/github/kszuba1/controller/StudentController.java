@@ -44,7 +44,7 @@ public class StudentController {
 
         model.addAttribute("searchTitle", new Course());
 
-        return "student-page";
+        return "home-page";
     }
 
     @GetMapping("/courseDetails")
@@ -136,7 +136,7 @@ public class StudentController {
 
         model.addAttribute("searchTitle", new Course());
 
-        return "student-page";
+        return "home-page";
     }
 
     @GetMapping("/search")
@@ -152,7 +152,7 @@ public class StudentController {
 
         model.addAttribute("searchTitle", searchCourse);
 
-        return "student-page";
+        return "home-page";
     }
 
 }

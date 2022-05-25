@@ -40,7 +40,7 @@ public class InstructorController {
 
         model.addAttribute("searchTitle", new Course());
 
-        return "student-page";
+        return "home-page";
     }
 
     @GetMapping("/delete")
