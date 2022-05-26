@@ -1,15 +1,32 @@
 package io.github.kszuba1.entity.dto;
 
+import io.github.kszuba1.validation.Username;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class InstructorDTO {
 
+    @NotBlank(message = "login cannot be blank")
+    @Size(min = 4, message = "login must be at least 4 characters long ")
+    @Size(max = 50, message = "login must be up to 50 characters long ")
+    @Username
     private String username;
 
+    @NotBlank(message = "password cannot be blank")
+    @Size(min = 4, message = "password must be at least 4 characters long ")
+    @Size(max = 50, message = "password must be up to 50 characters long ")
     private String password;
 
+    @NotBlank(message = "first name cannot be blank")
+    @Size(max = 50, message = "first name must be up to 50 characters long ")
     private String firstName;
 
+    @NotBlank(message = "last name cannot be blank")
+    @Size(max = 50, message = "last name must be up to 50 characters long ")
     private String lastName;
 
+    @Size(max = 50, message = "e-mail must be up to 50 characters long ")
     private String email;
 
     public InstructorDTO() {

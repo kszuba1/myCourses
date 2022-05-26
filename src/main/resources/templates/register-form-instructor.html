@@ -34,38 +34,43 @@
                     <div class="form-outline mb-4">
                         <input type="text" id="form3Example3" class="form-control form-control-lg"
                                placeholder="Enter login" name="username" th:field="*{username}"/>
-                        <label class="form-label" for="form3Example3">Login</label>
+                        <label class="form-label" for="form3Example3">Login</label><br>
+                        <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color: red"></span>
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-3">
                         <input type="password" id="form3Example4" class="form-control form-control-lg"
                                placeholder="Enter password" name="password" th:field="*{password}"/>
-                        <label class="form-label" for="form3Example4">Password</label>
+                        <label class="form-label" for="form3Example4">Password</label><br>
+                        <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"></span>
                     </div>
 
                     <!-- Nickname input -->
                     <div class="form-outline mb-3">
                         <input type="text" id="form3Example5" class="form-control form-control-lg"
                                placeholder="Enter first name" name="firstName" th:field="*{firstName}"/>
-                        <label class="form-label" for="form3Example4">First Name</label>
+                        <label class="form-label" for="form3Example4">First Name</label><br>
+                        <span class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" style="color: red"></span>
                     </div>
 
                     <!-- Nickname input -->
                     <div class="form-outline mb-3">
                         <input type="text" id="form3Example6" class="form-control form-control-lg"
                                placeholder="Enter last name" name="lastName" th:field="*{lastName}"/>
-                        <label class="form-label" for="form3Example4">Last Name</label>
+                        <label class="form-label" for="form3Example4">Last Name</label><br>
+                        <span class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" style="color: red"></span>
                     </div>
 
                     <!-- Email input -->
                     <div class="form-outline mb-3">
                         <input type="text" id="form3Example7" class="form-control form-control-lg"
                                placeholder="Enter e-mail" name="email" th:field="*{email}"/>
-                        <label class="form-label" for="form3Example4">E-mail</label>
+                        <label class="form-label" for="form3Example4">E-mail</label><br>
+                        <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>
                     </div>
 
-                    <div class="text-center text-lg-start mt-4 pt-2">
+                    <div class="text-center text-lg-start mt-4 pt-2" style="padding-bottom: 15px">
                         <button type="submit" class="btn btn-primary btn-lg"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
 

@@ -41,7 +41,7 @@ public class RegisterController {
 
     @PostMapping("/saveStudent")
     public String studentSave(@Valid @ModelAttribute("student") StudentDTO studentDTO,
-             BindingResult bindingResult) {
+                              BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()) {
             return "register-form-student";
@@ -53,7 +53,12 @@ public class RegisterController {
     }
 
     @PostMapping("/saveInstructor")
-    public String instructorSave(@ModelAttribute("instructor") InstructorDTO instructorDTO) {
+    public String instructorSave(@Valid @ModelAttribute("instructor") InstructorDTO instructorDTO,
+                                 BindingResult bindingResult ) {
+
+        if(bindingResult.hasErrors()) {
+            return "register-form-instructor";
+        }
 
         instructorService.save(instructorDTO);
 
