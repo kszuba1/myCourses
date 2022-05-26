@@ -2,6 +2,7 @@ package io.github.kszuba1.controller;
 
 import io.github.kszuba1.entity.Course;
 import io.github.kszuba1.entity.Instructor;
+import io.github.kszuba1.entity.Review;
 import io.github.kszuba1.service.CourseService;
 import io.github.kszuba1.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +93,10 @@ public class InstructorController {
         Course course = courseService.findById(id);
 
         model.addAttribute("course", course);
+
+        List<Review> reviews = course.getReviews();
+
+        model.addAttribute("reviews", reviews);
 
         return "course-details";
     }
