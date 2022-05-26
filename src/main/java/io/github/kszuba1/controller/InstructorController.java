@@ -31,10 +31,6 @@ public class InstructorController {
 
         Instructor instructor = instructorService.findByAccountUsername(auth.getName());
 
-        System.out.println(auth.getName());
-
-        System.out.println(instructor);
-
         List<Course> courseList = instructor.getCourses();
 
         model.addAttribute("courses", courseList);
@@ -82,7 +78,7 @@ public class InstructorController {
 
         Course course = courseService.findById(id);
 
-        model.addAttribute(course);
+        model.addAttribute("course", course);
 
         return "course-form";
     }
@@ -100,7 +96,6 @@ public class InstructorController {
 
         return "course-details";
     }
-
 
 
 }
