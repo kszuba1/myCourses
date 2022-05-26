@@ -49,7 +49,6 @@ public class RegisterController {
 
         studentService.saveStudentDto(studentDTO);
 
-
         return "redirect:/loginStudent";
     }
 
