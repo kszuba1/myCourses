@@ -3,8 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
+    <title>Student Home</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
@@ -13,11 +12,18 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
+
     <style>
-        a {
-            text-decoration: none;
+
+        * {
+            box-sizing: border-box;
         }
-        * {box-sizing: border-box;}
 
         body {
             margin: 0;
@@ -42,15 +48,6 @@
         .topnav a:hover {
             background-color: #ddd;
             color: black;
-        }
-
-        .topnav a.active {
-            background-color: #2196F3;
-            color: white;
-        }
-
-        .topnav .search-container {
-            float: right;
         }
 
         .topnav input[type=text] {
@@ -79,6 +76,7 @@
             .topnav .search-container {
                 float: none;
             }
+
             .topnav a, .topnav input[type=text], .topnav .search-container button {
                 float: none;
                 display: block;
@@ -87,13 +85,56 @@
                 margin: 0;
                 padding: 14px;
             }
+
             .topnav input[type=text] {
                 border: 1px solid #ccc;
             }
         }
+
+        body, html {
+            height: 100%;
+        }
+
+        /* The hero image */
+        .hero-image {
+            /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) , url("https://images.pexels.com/photos/5940721/pexels-photo-5940721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+
+            /* Set a specific height */
+            height: 45%;
+
+            /* Position and center the image to scale nicely on all screens */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Place text in the middle of the image */
+        .hero-text {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
     </style>
+
+
 </head>
 <body>
+
+
+<div class="hero-image">
+    <div class="hero-text">
+        <h1 style="font-size: 70px; font-family: 'Roboto Slab', serif;">myCourses</h1>
+
+    </div>
+</div>
+
+
+
 <div class="container" style="padding-top: 2%">
     <div class="topnav">
         <a th:href="@{home}">Home</a>

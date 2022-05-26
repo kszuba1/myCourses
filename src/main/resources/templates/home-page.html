@@ -110,7 +110,7 @@
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) , url("https://images.pexels.com/photos/5940721/pexels-photo-5940721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 
             /* Set a specific height */
-            height: 50%;
+            height: 45%;
 
             /* Position and center the image to scale nicely on all screens */
             background-position: center;
@@ -142,20 +142,15 @@
 </div>
 
 
-<div class="container">
+<div class="container" style="padding-top: 10px">
     <div class="row">
         <div class="col-12 text-center" style="position: relative; padding-bottom: 20px">
-
-
             <a th:href="@{/instructor/addCourse}"
                class="btn btn-success btn-md"
                sec:authorize="${hasRole('ROLE_INSTRUCTOR')}">
                 Add Course
             </a>
-
         </div>
-
-
     </div>
 </div>
 <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}" style="text-align: center;"></div>
@@ -168,7 +163,7 @@
         <a th:href="@{/student/student_logout}">Logout</a>
         <div class="search-container">
 
-            <form action="#" th:action="@{/student/search(title=*{title})}" th:object="${searchTitle}">
+            <form action="#" th:action="@{search(title=*{title})}" th:object="${searchTitle}">
                 <input type="text" th:field="*{title}" placeholder="Search.." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
