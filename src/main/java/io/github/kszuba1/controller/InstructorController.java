@@ -97,5 +97,25 @@ public class InstructorController {
         return "course-details";
     }
 
+    @GetMapping("/search")
+    public String searchByTitle(@RequestParam("title") String title, Model model) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        Instructor instructor = instructorService.findByAccountUsername(auth.getName());
+
+        List<Course> courses = courseService.findByTitleAndInstructor(title, instructor);
+
+        model.addAttribute("courses", courses);
+
+        Course searchCourse = new Course();
+
+        searchCourse.setTitle(title);
+
+        model.addAttribute("searchTitle", searchCourse);
+
+        return "home-page";
+    }
+
 
 }

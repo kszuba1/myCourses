@@ -2,6 +2,7 @@ package io.github.kszuba1.service;
 
 import io.github.kszuba1.dao.CourseRepository;
 import io.github.kszuba1.entity.Course;
+import io.github.kszuba1.entity.Instructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,11 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public List<Course> findByTitle(String title) {
         return courseRepository.findAllByTitleContaining(title);
+    }
+
+    @Override
+    public List<Course> findByTitleAndInstructor(String title, Instructor instructor) {
+        return courseRepository.findAllByTitleContainingAndInstructor(title, instructor);
     }
 
 
