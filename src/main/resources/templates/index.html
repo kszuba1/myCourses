@@ -6,11 +6,81 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/e2e10c1dd9.js" crossorigin="anonymous"></script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        /* The hero image */
+        .hero-image {
+            /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/5940721/pexels-photo-5940721.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+
+            /* Set a specific height */
+            height: 50%;
+
+            /* Position and center the image to scale nicely on all screens */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Place text in the middle of the image */
+        .hero-text {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        .btn-square-lg {
+            width: 150px !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            height: 150px !important;
+            text-align: center;
+            padding: 0px;
+            font-size:18px;
+        }
+    </style>
 
 </head>
 <body>
-<div class="alert alert-info text-center" th:if="${param.logout}">You have been logged out.</div>
-<a th:href="@{/student/home}">STUDENT</a>
-<a th:href="@{/instructor/home}">INSTRUCTOR</a>
+<div class="hero-image">
+    <div class="hero-text">
+        <h1 style="font-size: 70px; font-family: 'Roboto Slab', serif;">myCourses</h1>
+
+    </div>
+</div>
+
+<div class="container" style="margin: auto; width: 500px;padding-top: 2%">
+    <div class="alert alert-info text-center" th:if="${param.logout}">You have been logged out.</div>
+<!--    <a th:href="@{/student/home}">STUDENT</a>-->
+<!--    <a th:href="@{/instructor/home}">INSTRUCTOR</a>-->
+    <a th:href="@{/student/home}" type="button" class="btn btn-success btn-square-lg" style="margin-left: 5%" role="button">
+        <i class="fa-solid fa-user-graduate fa-5x" style="padding-top: 10px"></i>
+        <p style="padding-top: 10px">STUDENT</p>
+    </a>
+    <a th:href="@{/instructor/home}" type="button" class="btn btn-info btn-square-lg " style="float: right;margin-right: 5%" role="button">
+        <i class="fa-solid fa-user-tie fa-5x" style="padding-top: 10px"></i>
+        <p style="padding-top: 10px">INSTRUCTOR</p>
+    </a>
+
+</div>
 </body>
 </html>
