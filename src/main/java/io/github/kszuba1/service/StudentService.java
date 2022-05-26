@@ -12,4 +12,6 @@ public interface StudentService {
 
     void save(Student student);
 
+    boolean existsByNickname(String nickname);
+
 }

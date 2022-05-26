@@ -62,4 +62,9 @@ public class StudentServiceImpl implements StudentService{
     public void save(Student student) {
         studentRepository.save(student);
     }
+
+    @Override
+    public boolean existsByNickname(String nickname) {
+        return studentRepository.existsByNickname(nickname);
+    }
 }
