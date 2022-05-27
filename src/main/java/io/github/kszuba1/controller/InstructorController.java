@@ -10,8 +10,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -66,7 +68,14 @@ public class InstructorController {
     }
 
     @PostMapping("/saveCourse")
-    public String saveCourse(@ModelAttribute("course") Course course){
+    public String saveCourse(@Valid @ModelAttribute("course") Course course,
+                             BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()) {
+            System.out.println("WORKING");
+            return "course-form";
+        }
+
 
         courseService.save(course);
 

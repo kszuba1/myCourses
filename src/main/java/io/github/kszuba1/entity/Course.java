@@ -1,6 +1,8 @@
 package io.github.kszuba1.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,8 @@ public class Course {
 	private int id;
 	
 	@Column(name="title")
+	@NotBlank(message = "title cannot be blank")
+	@Size(max = 128, message = "title must be up to 128 characters long ")
 	private String title;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
@@ -22,6 +26,7 @@ public class Course {
 	private Instructor instructor;
 
 	@Column(name = "description")
+	@Size(max = 1000, message = "description must be up to 1000 characters long ")
 	private String description;
 
 	@ManyToMany(fetch=FetchType.LAZY,
