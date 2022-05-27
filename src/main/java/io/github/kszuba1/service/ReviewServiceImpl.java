@@ -1,7 +1,9 @@
 package io.github.kszuba1.service;
 
 import io.github.kszuba1.dao.ReviewRepository;
+import io.github.kszuba1.entity.Course;
 import io.github.kszuba1.entity.Review;
+import io.github.kszuba1.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +42,10 @@ public class ReviewServiceImpl implements ReviewService {
         }
 
         return review;
+    }
+
+    @Override
+    public boolean existsByCourseAndStudent(Course course, Student student) {
+        return reviewRepository.existsByCourseAndStudent(course, student);
     }
 }

@@ -142,23 +142,23 @@
         <a th:href="@{/student/student_logout}">Logout</a>
 
     </div>
-
 </div>
 <div class="container" style="padding-top: 5px;">
     <div th:object="${course}">
         <h1 th:text="*{title}" style="font-size: 45px"></h1>
         <h4 th:text="${course.instructor.firstName} + ' ' + ${course.instructor.lastName} " style="color: grey"></h4>
         <p th:text="*{description}"></p>
-
-
         <a th:href="@{/student/signUp(courseId=${course.id})}" style="float: right"
            class="btn btn-success btn-md" sec:authorize="${hasRole('ROLE_STUDENT')}">
 
             Sign up
         </a>
     </div>
+
     <br>
+
     <h4>Reviews</h4>
+    <p><div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}" style="text-align: center;"></div></p>
 
     <div class="container-md border biggerBottomPadding" style="padding-bottom: 5px" sec:authorize="${hasRole('ROLE_STUDENT')}">
         <form action="#" th:action="@{/student/addReview}" method="post" id="addComment" th:object="${review}">
@@ -178,10 +178,11 @@
             <div class="mb-3">
                 <label class="form-label">Comment:</label>
                 <textarea class="form-control input-xl"
-                          form="addComment" rows="5" cols="80" wrap="hard" th:field="*{comment}"> </textarea>
+                          form="addComment" rows="5" cols="80" wrap="hard" th:field="*{comment}"> </textarea><br>
+                <span class="error" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" style="color: red"></span>
             </div>
-
             <button type="submit" class="btn btn-primary">Add Review</button>
+
         </form>
     </div>
 </div>

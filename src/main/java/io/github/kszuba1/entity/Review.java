@@ -1,6 +1,7 @@
 package io.github.kszuba1.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="review")
@@ -12,6 +13,7 @@ public class Review {
     private int id;
 
     @Column(name="comment")
+    @Size(max = 256, message = "comment must be up to 256 characters long ")
     private String comment;
 
     @OneToOne

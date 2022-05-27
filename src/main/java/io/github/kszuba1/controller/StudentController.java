@@ -11,9 +11,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -102,9 +104,35 @@ public class StudentController {
 
 
     @PostMapping("/addReview")
-    public String addReview(@ModelAttribute("review") Review review) {
+    public String addReview(@Valid @ModelAttribute("review") Review review, BindingResult bindingResult,
+                            RedirectAttributes redirAttrs, Model model) {
 
-        System.out.println(review.getRate());
+        if(bindingResult.hasErrors()) {
+
+            Course course = review.getCourse();
+
+            model.addAttribute("course", course);
+
+            List<Review> reviews = course.getReviews();
+
+            model.addAttribute("reviews", reviews);
+
+            model.addAttribute("review", review);
+
+            return "course-details";
+        }
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        Student student = studentService.findByAccountUsername(auth.getName());
+
+        if (reviewService.existsByCourseAndStudent(review.getCourse(), student)) { // check if student have already commented this course
+
+            redirAttrs.addFlashAttribute("error", "You have already reviewed this course!");
+
+            return "redirect:/student/courseDetails?id=" + review.getCourse().getId();
+        }
+
 
         reviewService.save(review);
 
