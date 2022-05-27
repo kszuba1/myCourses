@@ -19,4 +19,6 @@ public interface CourseService {
 
     List<Course> findByTitleAndInstructor(String title, Instructor instructor);
 
+    boolean existsByTitle(String title);
+
 }

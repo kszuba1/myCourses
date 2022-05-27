@@ -72,10 +72,8 @@ public class InstructorController {
                              BindingResult bindingResult){
 
         if(bindingResult.hasErrors()) {
-            System.out.println("WORKING");
             return "course-form";
         }
-
 
         courseService.save(course);
 

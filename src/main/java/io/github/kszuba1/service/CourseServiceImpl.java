@@ -62,5 +62,10 @@ public class CourseServiceImpl implements CourseService{
         return courseRepository.findAllByTitleContainingAndInstructor(title, instructor);
     }
 
+    @Override
+    public boolean existsByTitle(String title) {
+        return courseRepository.existsByTitle(title);
+    }
+
 
 }

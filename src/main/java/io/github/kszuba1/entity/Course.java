@@ -1,5 +1,7 @@
 package io.github.kszuba1.entity;
 
+import io.github.kszuba1.validation.Title;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -18,6 +20,7 @@ public class Course {
 	@Column(name="title")
 	@NotBlank(message = "title cannot be blank")
 	@Size(max = 128, message = "title must be up to 128 characters long ")
+	@Title
 	private String title;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
