@@ -1,5 +1,6 @@
 package io.github.kszuba1.config;
 
+import io.github.kszuba1.error.CustomAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -21,6 +23,11 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder getPasswordEncoderStudent(){
         return NoOpPasswordEncoder.getInstance();
+    }
+
+    @Bean
+    public static AccessDeniedHandler accessDeniedHandler(){
+        return new CustomAccessDeniedHandler();
     }
 
     @Configuration
@@ -50,7 +57,8 @@ public class SecurityConfig {
                     .logoutUrl("/student/student_logout")
                     .logoutSuccessUrl("/?logout")
                     .deleteCookies("JSESSIONID")
-                    .and().csrf().disable();
+                    .and().csrf().disable()
+                    .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
         }
     }
 
@@ -81,7 +89,8 @@ public class SecurityConfig {
                     .logoutUrl("/instructor/instructor_logout")
                     .logoutSuccessUrl("/")
                     .deleteCookies("JSESSIONID")
-                    .and().csrf().disable();
+                    .and().csrf().disable()
+                    .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
         }
     }
 
