@@ -6,6 +6,7 @@ import io.github.kszuba1.entity.Review;
 import io.github.kszuba1.service.CourseService;
 import io.github.kszuba1.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-
+import java.security.Principal;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class InstructorController {
         return "home-page";
     }
 
+    @PreAuthorize("principal.username.equals(@courseServiceImpl.findById(#id).instructor.account.username)")
     @GetMapping("/delete")
     public String deleteCourse(
             @RequestParam("courseId") int id) {
@@ -89,6 +91,7 @@ public class InstructorController {
         return "redirect:/instructor/home";
     }
 
+    @PreAuthorize("principal.username.equals(@courseServiceImpl.findById(#id).instructor.account.username)")
     @GetMapping("/updateCourse")
     public String updateCourse(@RequestParam("courseId") int id, Model model) {
 
