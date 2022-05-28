@@ -170,7 +170,7 @@ public class StudentController {
     @GetMapping("/search")
     public String searchByTitle(@RequestParam("title") String title, Model model) {
 
-        List<Course> courses = courseService.findByTitle(title);
+        List<Course> courses = courseService.findByTitleContaining(title);
 
         model.addAttribute("courses", courses);
 

@@ -4,6 +4,7 @@ import io.github.kszuba1.entity.Course;
 import io.github.kszuba1.entity.Instructor;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CourseService {
 
@@ -15,10 +16,12 @@ public interface CourseService {
 
     void save(Course course);
 
-    List<Course> findByTitle(String title);
+    List<Course> findByTitleContaining(String title);
 
     List<Course> findByTitleAndInstructor(String title, Instructor instructor);
 
     boolean existsByTitle(String title);
+
+    Course findByTitle(String title);
 
 }

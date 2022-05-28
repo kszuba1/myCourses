@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -69,9 +70,17 @@ public class InstructorController {
 
     @PostMapping("/saveCourse")
     public String saveCourse(@Valid @ModelAttribute("course") Course course,
-                             BindingResult bindingResult){
+                             BindingResult bindingResult) {
 
-        if(bindingResult.hasErrors()) {
+        Course existingCourse = courseService.findByTitle(course.getTitle());
+
+        if (existingCourse !=null && existingCourse.getId() != course.getId()) {
+            bindingResult.addError(new FieldError("course", "title",
+                    "Course with given title already exists"));
+
+            return "course-form";
+        }
+        if (bindingResult.hasErrors()) {
             return "course-form";
         }
 
@@ -81,7 +90,7 @@ public class InstructorController {
     }
 
     @GetMapping("/updateCourse")
-    public String updateCourse(@RequestParam("courseId") int id, Model model){
+    public String updateCourse(@RequestParam("courseId") int id, Model model) {
 
         Course course = courseService.findById(id);
 
@@ -91,7 +100,7 @@ public class InstructorController {
     }
 
     @GetMapping("/courseDetails")
-    public String courseDetails(@RequestParam int id, Model model){
+    public String courseDetails(@RequestParam int id, Model model) {
 
         Course course = courseService.findById(id);
 

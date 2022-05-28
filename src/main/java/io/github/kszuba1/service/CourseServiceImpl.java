@@ -1,6 +1,7 @@
 package io.github.kszuba1.service;
 
 import io.github.kszuba1.dao.CourseRepository;
+import io.github.kszuba1.entity.Account;
 import io.github.kszuba1.entity.Course;
 import io.github.kszuba1.entity.Instructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public List<Course> findByTitle(String title) {
+    public List<Course> findByTitleContaining(String title) {
         return courseRepository.findAllByTitleContaining(title);
     }
 
@@ -66,6 +67,18 @@ public class CourseServiceImpl implements CourseService{
     public boolean existsByTitle(String title) {
         return courseRepository.existsByTitle(title);
     }
+
+    @Override
+    public Course findByTitle(String title) {
+        Optional<Course> resultCourse = courseRepository.findByTitle(title);
+
+        if (resultCourse.isPresent()) {
+            return resultCourse.get();
+        }
+
+        return null;
+    }
+
 
 
 }
