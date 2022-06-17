@@ -1,7 +1,9 @@
 # myCourses
 <hr>
-live : [http://my-courses-application.herokuapp.com/myCourses/](http://my-courses-application.herokuapp.com/myCourses/)
+
+live: [http://my-courses-application.herokuapp.com/myCourses/](http://my-courses-application.herokuapp.com/myCourses/)
 <br>
+
 Use these credentials to login as:
 * Student:
   * login: user
@@ -10,7 +12,7 @@ Use these credentials to login as:
   * login: instr
   * password: pass
 <br>
-
+  * 
 Full-stack application. There are 2 account types: Student and Instructor.
 As a student, you can sign up for courses and comment on the courses for which you are enrolled. Instructor has a different interface, can add new courses or update/delete their courses.
 <br>
