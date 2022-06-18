@@ -43,8 +43,8 @@ As a student, you can sign up for courses and comment on the courses for which y
   
 ## How to run
 
-You will need MySQL. Run this /resources/my_courses_init.sql script in MySQL Workbench.
-Then change /resources/application.properties with your credentials.
+You will need MySQL. Run this /src/main/resources/my_courses_init.sql script in MySQL Workbench.
+Then change /src/main/resources/application.properties with your credentials.
 ```.properties
 spring.datasource.url=
 spring.datasource.username=
